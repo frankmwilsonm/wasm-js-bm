@@ -14,6 +14,8 @@ function jsFib(n) {
   return jsFib(n-1) + jsFib(n-2);
 }
 </script>
+
+
 <script id="ws_instantiate_code">
 var module, functions = {};
 fetch('fib.wasm')
@@ -32,6 +34,7 @@ fetch('fib.wasm')
     };
     module = Module(moduleArgs);
   });
+
 </script>
 <script id="test_code">
 function start() {
@@ -85,13 +88,13 @@ function start() {
     document.getElementById('message').innerText = 'Running JavaScript';
   });
 
-  document.getElementById('message').innerText = 'Checking equality';
+  document.getElementById('message').innerText = 'Comprobando Igualdad';
 }
 </script>
 <script>
 function onReady() {
   document.getElementById('run_button').disabled = false;
-  document.getElementById('message').innerText = 'Ready';
+  document.getElementById('message').innerText = 'Fibonacci | Lista';
 }
 
 function init() {
@@ -143,18 +146,18 @@ function switchDisplay(div) {
 <body onload="init()">
   <div>
     <p>
-      <button id="run_button" onclick="start()" disabled>run</button>
-      <span id="message">Loading WebAssembly</span>
+      <button id="run_button" onclick="start()" disabled>Iniciar</button>
+      <span id="message">Cargando WebAssembly</span>
     </p>
     <p>
-      Result (average [ms])<br />
+      Resultados (promedio [ms])<br />
       JavaScript: <span id="js_performance"></span><br />
       WebAssembly: <span id="ws_performance"></span><br />
       JavaScript/WebAssembly: <span id="comparison"></span><br />
     </p>
   </div>
   <div>
-    <p onclick="switchDisplay(this.parentNode)">+ Test code</p>
+    <!-- <p onclick="switchDisplay(this.parentNode)">+ Test code</p> -->
     <p><textarea id="test_code_area" readonly style="display:none"></textarea></p>
   </div>
   <div>
@@ -166,11 +169,11 @@ function switchDisplay(div) {
     <p><textarea id="ws_code_area" readonly></textarea></p>
   </div>
   <div>
-    <p onclick="switchDisplay(this.parentNode)">+ WebAssembly Compile shell script</p>
+    <!-- <p onclick="switchDisplay(this.parentNode)">+ WebAssembly Compile shell script</p> -->
     <p><textarea id="sh_code_area" readonly style="display:none"></textarea></p>
   </div>
   <div>
-    <p onclick="switchDisplay(this.parentNode)">+ WebAssembly Instantiation code</p>
+    <p onclick="switchDisplay(this.parentNode)">+ Codigo de Instanciación</p>
     <p><textarea id="ws_instantiate_code_area" readonly style="display:none"></textarea></p>
   </div>
 </body>
