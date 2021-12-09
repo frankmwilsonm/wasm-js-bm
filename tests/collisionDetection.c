@@ -37,3 +37,4 @@ int collisionDetection(struct position *positions,
   }
   return count;
 }
+
