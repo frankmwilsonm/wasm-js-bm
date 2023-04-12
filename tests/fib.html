@@ -36,12 +36,19 @@ fetch('fib.wasm')
   });
 
 </script>
+
+
+
+
+
 <script id="test_code">
 function start() {
   document.getElementById('run_button').disabled = true;
 
-  var num = 0x28;
+  var num = 0x28; // exa 40 decimal
   var loop = 10;
+
+
 
   var jsPerformance = document.getElementById('js_performance');
   var wsPerformance = document.getElementById('ws_performance');
@@ -51,19 +58,34 @@ function start() {
   wsPerformance.innerText = '';
   comparison.innerText = '';
 
+
+
   function checkFunctionality(n) {
     return jsFib(n) === functions.fib(n);
   }
 
+
+
   function run(func, n, loop) {
     func(n); // warm-up
+ console.log("Fun runinig: "+ func)
     var startTime = performance.now();
     for (var i = 0; i < loop; i++) {
       func(n);
     }
     var endTime = performance.now();
-    return ((endTime - startTime) / loop).toFixed(4);
+
+    let resultbn = ((endTime - startTime) / loop).toFixed(4)
+
+    console.log("Time: "+ resultbn)
+
+    console.log("=========")
+
+    return resultbn;
   }
+
+
+
 
   // don't use Promise for the non Promise support browsers so far.
   setTimeout(function () {
@@ -73,6 +95,7 @@ function start() {
       document.getElementById('run_button').disabled = false;
       return;
     }
+
     setTimeout(function () {
       jsPerformance.innerText = run(jsFib, num, loop);
       setTimeout(function () {
@@ -91,6 +114,14 @@ function start() {
   document.getElementById('message').innerText = 'Comprobando Igualdad';
 }
 </script>
+
+
+
+
+
+
+
+
 <script>
 function onReady() {
   document.getElementById('run_button').disabled = false;
