@@ -68,7 +68,8 @@ function start() {
 
   function run(func, n, loop) {
     func(n); // warm-up
- console.log("Fun runinig: "+ func)
+    console.log("=========")
+ console.log("Fun to run: "+ func.name)
     var startTime = performance.now();
     for (var i = 0; i < loop; i++) {
       func(n);
@@ -79,7 +80,6 @@ function start() {
 
     console.log("Time: "+ resultbn)
 
-    console.log("=========")
 
     return resultbn;
   }
